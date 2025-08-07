@@ -1,9 +1,9 @@
+version: '3'
 services:
-  embedded_env:
+  embedded_course_dev:
     build: .
-    container_name: embedded_course_dev
     volumes:
-      - ./linux-beagleboard:/workspace/linux-beagleboard
+      - .:/workspace
       - ./output:/build/output
-    user: builder  # Runs as non-root user
+    user: "${UID:-1000}:${GID:-1000}"  # This will run the container as your user
     working_dir: /workspace
