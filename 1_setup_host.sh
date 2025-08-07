@@ -11,7 +11,6 @@ REQUIRED_EXTENSIONS=(
     "ms-vscode-remote.remote-ssh"
     "ms-vscode-remote.remote-containers"
     "ms-azuretools.vscode-docker"
-    "amiralizadeh9480.linux-device-tree"
     "ms-vscode.cpptools"
 )
 
