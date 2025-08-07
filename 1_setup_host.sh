@@ -1,22 +1,40 @@
 #!/bin/bash
+set -e
 
-# Update system
+# ============================================
+# BeagleBone Black Development Environment Setup
+# Automates VS Code, Docker, and extension setup
+# ============================================
+
+# Configuration
+REQUIRED_EXTENSIONS=(
+    "ms-vscode-remote.remote-ssh"
+    "ms-vscode-remote.remote-containers"
+    "ms-azuretools.vscode-docker"
+    "amiralizadeh9480.linux-device-tree"
+    "ms-vscode.cpptools"
+)
+
+# System Update
+echo "[1/4] Updating system packages..."
 sudo apt-get update && sudo apt-get upgrade -y
 
-# Install VS Code
-if ! command -v code &> /dev/null; then
-    echo "Installing VS Code..."
+# VS Code Installation
+if ! command -v code &>/dev/null; then
+    echo "[2/4] Installing VS Code..."
     sudo apt-get install -y wget gpg
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
     sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
     sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
     sudo apt-get update
     sudo apt-get install -y code
+else
+    echo "[2/4] VS Code already installed, skipping..."
 fi
 
-# Install Docker
-if ! command -v docker &> /dev/null; then
-    echo "Installing Docker..."
+# Docker Installation
+if ! command -v docker &>/dev/null; then
+    echo "[3/4] Installing Docker..."
     sudo apt-get install -y ca-certificates curl
     sudo install -m 0755 -d /etc/apt/keyrings
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
@@ -25,14 +43,29 @@ if ! command -v docker &> /dev/null; then
     sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     
-    # Add current user to the docker group
+    # Add current user to docker group
     sudo usermod -aG docker $USER
     newgrp docker
+else
+    echo "[3/4] Docker already installed, skipping..."
 fi
 
-# Install useful VS Code extensions
-code --install-extension ms-vscode-remote.remote-ssh
-code --install-extension ms-vscode-remote.remote-containers
-code --install-extension ms-azuretools.vscode-docker
+# VS Code Extensions
+echo "[4/4] Managing VS Code extensions..."
+INSTALLED_EXTENSIONS=$(code --list-extensions)
 
-echo "Requirements installed. Please close and restart your session for changes to take effect."
+for extension in "${REQUIRED_EXTENSIONS[@]}"; do
+    if ! echo "$INSTALLED_EXTENSIONS" | grep -q "$extension"; then
+        echo "Installing extension: $extension"
+        code --install-extension "$extension" --force > /dev/null
+    else
+        echo "Extension already installed: $extension"
+    fi
+done
+
+# Post-installation
+echo "✅ Setup completed successfully!"
+echo "Recommended actions:"
+echo "1. Restart your terminal session"
+echo "2. Verify Docker access: docker run hello-world"
+echo "3. Open VS Code and check installed extensions"
