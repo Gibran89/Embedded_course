@@ -7,22 +7,22 @@ Development Environment Setup Guide
 Run the following command to download the project:
 bash
 
-git clone https://github.com/Gibran89/Embedded_course.git
+    git clone https://github.com/Gibran89/Embedded_course.git
 
 2. Make scripts executable
 
 Set execute permissions for the setup scripts:
 bash
 
-chmod +x 1_setup_host.sh
-chmod +x build_kernel.sh
+    chmod +x 1_setup_host.sh
+    chmod +x build_kernel.sh
 
 3. Configure your workspace
 
 Execute the host setup script (this will install Docker, VS Code, and required extensions):
 bash
 
-./1_setup_host.sh
+    ./1_setup_host.sh
 
 4. Restart your terminal
 
