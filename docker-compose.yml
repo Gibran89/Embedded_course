@@ -1,0 +1,9 @@
+services:
+  embedded_env:
+    build: .
+    container_name: embedded_course_dev
+    volumes:
+      - ./linux-beagleboard:/workspace/linux-beagleboard
+      - ./output:/build/output
+    user: builder  # Runs as non-root user
+    working_dir: /workspace
