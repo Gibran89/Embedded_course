@@ -37,10 +37,12 @@ bash
 
 6. Build the kernel
 bash
+
     docker compose build
 
-7. Execute container
+8. Execute container
 bash
+
     docker compose up
 
 The container is preconfigured to:
