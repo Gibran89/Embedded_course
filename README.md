@@ -37,6 +37,12 @@ bash
 
 6. Build the kernel
 
+   docker compose build
+
+7. Execute container
+
+   docker compose up
+
 The container is preconfigured to:
 
     Download all required tools (Linaro toolchain)
