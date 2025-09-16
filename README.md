@@ -38,12 +38,12 @@ bash
 6. Build the kernel
 bash
 
-    docker compose build
+    docker ps -a
 
 8. Execute container
 bash
 
-    docker compose up
+    docker ps -a
 
 The container is preconfigured to:
 
