@@ -33,17 +33,17 @@ Close the current terminal window or open a new one.
 Verify the container exists in your Docker environment:
 bash
 
-    docker ps -a1
+    docker ps -a
 
 6. Build the kernel
 bash
 
-    docker ps -a
+        docker compose build
 
 8. Execute container
 bash
 
-    docker ps -a
+        docker compose up
 
 The container is preconfigured to:
 
