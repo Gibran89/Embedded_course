@@ -37,11 +37,11 @@ bash
 
 6. Build the kernel
 
-   docker compose build
+    docker compose build
 
 7. Execute container
 
-   docker compose up
+    docker compose up
 
 The container is preconfigured to:
 
