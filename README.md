@@ -33,7 +33,7 @@ Close the current terminal window or open a new one.
 Verify the container exists in your Docker environment:
 bash
 
-    docker ps -a
+    docker ps -a1
 
 6. Build the kernel
 bash
