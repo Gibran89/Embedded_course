@@ -27,12 +27,13 @@ bash
 4. Restart your terminal
 
 Close the current terminal window or open a new one.
+
 5. Check container status
 
 Verify the container exists in your Docker environment:
 bash
 
-docker ps -a
+    docker ps -a
 
 6. Build the kernel
 
