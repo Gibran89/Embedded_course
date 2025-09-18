@@ -46,23 +46,16 @@ Editar las siguientes líneas:
     user_name=debian
     user_password=tu_password_usuario
 
-7. Verificación de la configuración del kernel
 
-        sudo nano /mnt/boot/uEnv.txt
-   
-Asegurarse de que contiene:
-uname_r=6.12.32-bone28
-
-8. Desmontaje seguro
-bash
+7. Desmontaje seguro
 
         sudo umount /mnt/boot /mnt/data /mnt/rootfs
         sync
 
-9. Conexión serial (para debugging)
+8. Conexión serial (para debugging)
 
        sudo screen /dev/ttyUSB0 115200
-o alternativa:
+   o alternativa:
 
-    sudo minicom -D /dev/ttyUSB0 -b 115200
+        sudo minicom -D /dev/ttyUSB0 -b 115200
 
