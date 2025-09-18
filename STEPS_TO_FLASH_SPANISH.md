@@ -34,14 +34,22 @@ bash
 
         sudo blkid /dev/sdb1 /dev/sdb2 /dev/sdb3
 
-6. Configuración de contraseñas
+6. Montar las particiones   
 bash
 
         sudo mount /dev/sdb1 /mnt/boot
+bash
+
+    sudo mount /dev/sdb2 /mnt/data
+bash
+
+    sudo mount /dev/sdb3 /mnt/rootfs
+6. Configuración de contraseñas
+
    
 bash
 
-        sudo nano /mnt/boot/sysconf.txt
+    sudo nano /mnt/boot/sysconf.txt
    
 Editar las siguientes líneas:
 bash
