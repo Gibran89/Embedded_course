@@ -7,32 +7,34 @@ bash
 
     unxz am335x-debian-12.11-base-vscode-v6.12-armhf-2025-05-29-4gb.img.xz
 
-3. Identificación de la SD card
+2. Identificación de la SD card
 bash
 
        lsblk
 Ejemplo de salida esperada:
-sdb      8:16   1  58.2G  0 disk 
- ├─sdb1   8:17   1    36M  0 part 
- ├─sdb2   8:18   1   512M  0 part 
- └─sdb3   8:19   1     3G  0 part
+bash
 
-5. Desmontaje de particiones
+    sdb      8:16   1  58.2G  0 disk 
+     ├─sdb1   8:17   1    36M  0 part 
+     ├─sdb2   8:18   1   512M  0 part 
+     └─sdb3   8:19   1     3G  0 part
+
+3. Desmontaje de particiones
 bash
 
         sudo umount /dev/sdb1 /dev/sdb2 /dev/sdb3
 
-7. Escritura de la imagen en la SD card
+4. Escritura de la imagen en la SD card
 bash
 
         sudo dd if=am335x-debian-12.11-base-vscode-v6.12-armhf-2025-05-29-4gb.img of=/dev/sdb bs=4M status=progress oflag=sync
 
-8. Verificación de las particiones creadas
+5. Verificación de las particiones creadas
 bash
 
         sudo blkid /dev/sdb1 /dev/sdb2 /dev/sdb3
 
-9. Configuración de contraseñas
+6. Configuración de contraseñas
 bash
 
         sudo mount /dev/sdb1 /mnt/boot
