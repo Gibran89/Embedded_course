@@ -38,19 +38,23 @@ bash
 bash
 
         sudo mount /dev/sdb1 /mnt/boot
+   
 bash
 
-    sudo nano /mnt/boot/sysconf.txt
+        sudo nano /mnt/boot/sysconf.txt
    
 Editar las siguientes líneas:
-root_password=tu_password_root
-user_name=debian
-user_password=tu_password_usuario
+bash
+
+    root_password=tu_password_root
+    user_name=debian
+    user_password=tu_password_usuario
 
 7. Verificación de la configuración del kernel
 bash
 
         sudo nano /mnt/boot/uEnv.txt
+   
 Asegurarse de que contiene:
 uname_r=6.12.32-bone28
 
