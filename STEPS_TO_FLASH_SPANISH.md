@@ -59,3 +59,5 @@ Editar las siguientes líneas:
 
         sudo minicom -D /dev/ttyUSB0 -b 115200
 
+9. Ajustar salida de terminal
+        stty cols 180 rows 140
