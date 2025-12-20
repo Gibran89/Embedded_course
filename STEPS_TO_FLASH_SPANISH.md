@@ -30,7 +30,13 @@ bash
         sudo blkid /dev/sdb1 /dev/sdb2 /dev/sdb3
 
 7. Montar las particiones
-   
+
+        sudo mkdir -p /mnt/boot
+
+        sudo mkdir -p /mnt/data
+
+        sudo mkdir -p /mnt/rootfs
+        
         sudo mount /dev/sdb1 /mnt/boot
 
         sudo mount /dev/sdb2 /mnt/data
