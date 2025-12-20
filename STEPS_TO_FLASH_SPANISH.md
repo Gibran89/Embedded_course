@@ -32,16 +32,9 @@ bash
 7. Montar las particiones
 
         sudo mkdir -p /mnt/boot
-
-        sudo mkdir -p /mnt/data
-
-        sudo mkdir -p /mnt/rootfs
         
         sudo mount /dev/sdb1 /mnt/boot
 
-        sudo mount /dev/sdb2 /mnt/data
-
-        sudo mount /dev/sdb3 /mnt/rootfs
 6. Configuración de contraseñas
 
         sudo nano /mnt/boot/sysconf.txt
@@ -55,7 +48,7 @@ Editar las siguientes líneas:
 
 7. Desmontaje seguro
 
-        sudo umount /mnt/boot /mnt/data /mnt/rootfs
+        sudo umount /mnt/boot
         sync
 
 8. Conexión serial (para debugging)
