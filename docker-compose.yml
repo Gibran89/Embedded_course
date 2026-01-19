@@ -1,4 +1,3 @@
-version: '3'
 services:
   embedded_course_dev:
     build: .
@@ -7,3 +6,7 @@ services:
       - ./output:/build/output
     user: "${UID:-1000}:${GID:-1000}"  # This will run the container as your user
     working_dir: /workspace
+    tty: true  # Permite terminal interactiva
+    stdin_open: true  # Permite entrada estándar
+    # Opcional: comando por defecto si quieres bash
+    command: /bin/bash
