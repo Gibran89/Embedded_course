@@ -48,7 +48,7 @@ bash
 8. move to container
 bash
 
-    docker compose exec embedded_course_dev bash
+        docker compose exec embedded_course_dev bash
 
 The container is preconfigured to:
 
