@@ -48,4 +48,4 @@ RUN chmod +x /build/build_kernel.sh
 RUN git config --global --add safe.directory ${WORKDIR}/linux-beagleboard
 
 # Set entry point and default command
-ENTRYPOINT ["/build/build_kernel.sh"]
+CMD ["/bin/bash"]
