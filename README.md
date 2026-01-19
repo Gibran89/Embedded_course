@@ -40,10 +40,15 @@ bash
 
         docker compose build
 
-8. Execute container
+7. Execute container
 bash
 
         docker compose up
+
+8. move to container
+bash
+
+    docker compose exec embedded_course_dev bash
 
 The container is preconfigured to:
 
