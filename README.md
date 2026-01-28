@@ -77,3 +77,11 @@ remove old symb link
 create new symblink
 
     sudo ln -s /boot/vmlinuz-6.12.34+ /boot/zImage
+
+pasos para cargar el nuevo kernel:
+1. Desconectar la alimentacion
+2. Presiar el boton (y mantenerlo presionado)
+3. Connectar la alimentacion
+4. Esperar 5 segundos y solar el boton
+5. esperar 1 minuto
+6. 
