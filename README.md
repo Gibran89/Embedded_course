@@ -52,7 +52,7 @@ bash
 
 9. Compile
 
-        ./build
+        ./build_kernel.sh
 
 
 expected result:
