@@ -43,7 +43,7 @@ bash
 7. Execute container
 bash
 
-        docker compose up
+        docker compose up -d
 
 8. move to container
 bash
