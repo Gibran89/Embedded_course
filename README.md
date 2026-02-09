@@ -50,6 +50,30 @@ bash
 
         docker compose exec embedded_course_dev bash
 
+9. Compile
+
+        ./build
+
+
+expected result:
+
+          INSTALL ../output/modules/lib/modules/6.12.34+/kernel/net/vmw_vsock/vsock_loopback.ko
+          XZ      ../output/modules/lib/modules/6.12.34+/kernel/net/vmw_vsock/vsock_loopback.ko.xz
+          INSTALL ../output/modules/lib/modules/6.12.34+/kernel/net/nsh/nsh.ko
+           XZ      ../output/modules/lib/modules/6.12.34+/kernel/net/nsh/nsh.ko.xz
+           INSTALL ../output/modules/lib/modules/6.12.34+/kernel/net/hsr/hsr.ko
+           XZ      ../output/modules/lib/modules/6.12.34+/kernel/net/hsr/hsr.ko.xz
+           INSTALL ../output/modules/lib/modules/6.12.34+/kernel/net/qrtr/qrtr.ko
+           XZ      ../output/modules/lib/modules/6.12.34+/kernel/net/qrtr/qrtr.ko.xz
+          INSTALL ../output/modules/lib/modules/6.12.34+/kernel/net/qrtr/qrtr-smd.ko
+          XZ      ../output/modules/lib/modules/6.12.34+/kernel/net/qrtr/qrtr-smd.ko.xz
+         INSTALL ../output/modules/lib/modules/6.12.34+/kernel/net/qrtr/qrtr-tun.ko
+         XZ      ../output/modules/lib/modules/6.12.34+/kernel/net/qrtr/qrtr-tun.ko.xz
+          DEPMOD  ../output/modules/lib/modules/6.12.34+
+          Compilation completed!
+         builder@cfc136c05720:/workspace$ 
+
+
 The container is preconfigured to:
 
     Download all required tools (Linaro toolchain)
