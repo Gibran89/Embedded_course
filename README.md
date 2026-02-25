@@ -105,8 +105,8 @@ create new symblink
 
 pasos para cargar el nuevo kernel:
 1. Desconectar la alimentacion
-2. Presiar el boton (y mantenerlo presionado)
-3. Connectar la alimentacion
-4. Esperar 5 segundos y solar el boton
-5. esperar 1 minuto
-6. 
+2. Desconectar la SDCard.
+3. Presiar el boton (y mantenerlo presionado)
+4. Connectar la alimentacion
+5. Esperar 5 segundos y solar el boton
+6. esperar 1 minuto
