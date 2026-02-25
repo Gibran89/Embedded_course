@@ -26,18 +26,42 @@ fi
 
 # Configure kernel
 echo "Configuring kernel..."
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bb.org_defconfig
+#make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bb.org_defconfig
 
 # Compilation
 echo "Compiling..."
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc) zImage dtbs modules
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc) zImage modules dtbs
+# Obtener la versión del kernel compilado (CORREGIDO)
+KERNEL_VERSION=$(make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- kernelrelease | tail -1 | tr -d ' ')
 
-# Prepare output
+echo "Kernel version: '${KERNEL_VERSION}'"
+
+# Prepare output (limpiar primero)
 echo "Preparing output..."
 mkdir -p ../output
-cp arch/arm/boot/zImage ../output/
-mkdir -p ../output/dtbs
-find arch/arm/boot/dts/ -name "*.dtb" -exec cp {} ../output/dtbs/ \;
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install INSTALL_MOD_PATH=../output/modules
 
+# Copiar zImage renombrado como vmlinuz-${KERNEL_VERSION}
+cp arch/arm/boot/zImage "../output/vmlinuz-${KERNEL_VERSION}"
+
+# Crear directorio para dtbs con el nombre de la versión
+mkdir -p "../output/${KERNEL_VERSION}"
+find arch/arm/boot/dts/ -name "*.dtb" -exec cp {} "../output/${KERNEL_VERSION}/" \;
+
+# Instalar módulos (esto crea lib/modules/${KERNEL_VERSION}/)
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install INSTALL_MOD_PATH=../output
+
+# Mostrar resultado
+echo "==================================="
 echo "Compilation completed!"
+echo "==================================="
+echo "Estructura final en output/:"
+ls -la ../output/
+echo ""
+echo "Contenido de ${KERNEL_VERSION}/:"
+ls -la "../output/${KERNEL_VERSION}/" | head -10
+echo "..."
+echo ""
+echo "Módulos instalados en:"
+ls -la "../output/lib/modules/"
+echo "==================================="
+tux@tux:~/Documents/Embedded_course$ 
