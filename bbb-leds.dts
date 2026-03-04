@@ -1,0 +1,67 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/dts-v1/;
+/plugin/;
+
+/*
+ * Overlay para restaurar los LEDs de usuario
+ * Versión para compilar DIRECTAMENTE en BBB (sin includes externos)
+ */
+
+/ {
+    compatible = "ti,am335x-bone-black", "ti,am335x-bone", "ti,am33xx";
+    part-number = "BBB-LEDS-FINAL";
+    version = "00A0";
+
+    fragment@0 {
+        target = <&am33xx_pinmux>;
+        __overlay__ {
+            user_leds_s0_pins: user-leds-s0-pins {
+                pinctrl-single,pins = <
+                    0x854 0x07  /* P9_14 (usr0) - Pull Down, MODE7 */
+                    0x858 0x17  /* P9_16 (usr1) - Pull Up, MODE7  */
+                    0x85c 0x07  /* P8_14 (usr2) - Pull Down, MODE7 */
+                    0x860 0x17  /* P8_16 (usr3) - Pull Up, MODE7  */
+                >;
+            };
+        };
+    };
+
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            leds {
+                pinctrl-names = "default";
+                pinctrl-0 = <&user_leds_s0_pins>;
+                compatible = "gpio-leds";
+
+                led2 {
+                    label = "beaglebone:green:usr0";
+                    gpios = <&gpio1 21 0>;  /* GPIO_ACTIVE_HIGH = 0 */
+                    linux,default-trigger = "heartbeat";
+                    default-state = "off";
+                };
+
+                led3 {
+                    label = "beaglebone:green:usr1";
+                    gpios = <&gpio1 22 0>;
+                    linux,default-trigger = "mmc0";
+                    default-state = "off";
+                };
+
+                led4 {
+                    label = "beaglebone:green:usr2";
+                    gpios = <&gpio1 23 0>;
+                    linux,default-trigger = "cpu0";
+                    default-state = "off";
+                };
+
+                led5 {
+                    label = "beaglebone:green:usr3";
+                    gpios = <&gpio1 24 0>;
+                    linux,default-trigger = "mmc1";
+                    default-state = "off";
+                };
+            };
+        };
+    };
+};
